@@ -52,7 +52,7 @@ function checkBirthday(birthday) {
     let diff = now - birthday;
     let age = diff / 1000 / 60 / 60 / 24 / 365;
 
-    if (age <= 18) {
+    if (age < 18) {
         return 'Нет';
     } else {
         return 'Да';
