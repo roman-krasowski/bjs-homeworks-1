@@ -5,6 +5,7 @@ class Weapon {
         this.attack = attack;
         this.durability = durability;
         this.range = range;
+        this.durabilityInitial = durability;
     }
 
     takeDamage(damage) {
@@ -16,7 +17,6 @@ class Weapon {
     }
 
     getDamage() {
-      let durabilityInitial = this.durability;
       if (this.durability >= this.durabilityInitial /100 * 30) {
         return this.attack;
       } else if (this.durability === 0) {
