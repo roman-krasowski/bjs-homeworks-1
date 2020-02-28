@@ -30,8 +30,8 @@ function getAverageMark(marks) {
     Array.from(marks);
     let sum = 0;
     for (let i = 0; i < marks.length; i++) {
-        marks[i] = parseInt(marks[i]);
-        sum += marks[i];
+        sum += parseInt(marks[i]);
+
     }
     console.log(marks);
     let roundedAverage = Math.round(sum / marks.length);
@@ -53,8 +53,8 @@ function checkBirthday(birthday) {
     let age = diff / 1000 / 60 / 60 / 24 / 365;
 
     if (age < 18) {
-        return 'Нет';
+        return false;
     } else {
-        return 'Да';
+        return true;
     }
 }
