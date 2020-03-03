@@ -48,3 +48,14 @@ console.log(compareArrays([8, 9, 5, 4], [8, 9, 5, 4, 8, 3, 5]));
 console.log(compareArrays([9, 2, 4, 8, 2], [9, 2, 4]));
 console.log(compareArrays([1, 2, 3], [2, 3, 1]));
 console.log(compareArrays([8, 1, 2], [8, 1, 2]));
+
+//testCase
+let testArray = [ [1,2,3], [1,2], [1,2,3], [1,2], [9,5,2,4] ];
+
+console.time('Timer');
+testArray.forEach(item => sum);
+console.timeEnd('Timer');
+
+console.time('Timer');
+testArray.forEach(item => memorize);
+console.timeEnd('Timer');
