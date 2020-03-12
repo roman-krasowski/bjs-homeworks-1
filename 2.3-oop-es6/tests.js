@@ -1,138 +1,202 @@
-describe('Домашнее задание к занятию 2.3 «ООП в JS (ES6)»', () => {
+//Assignment 1
+class Weapon {
+    constructor({name, attack, durability, range}) {
+        this.name = name;
+        this.attack = attack;
+        this.durability = durability;
+         this.durabilityInitial = durability;
+        this.range = range;
+    }
 
-  let weapon;
-  let studentLog;
+    takeDamage(damage) {
+            if (this.durability - damage <= 0) {
+            return this.durability = 0;
+        } else {
+            return this.durability -= damage;
+        }
+    }
 
-  beforeEach(function(){
-    weapon = new Weapon({
-      name: 'Старый меч',
-      attack: 20,
-      durability: 10,
-      range: 1,
-    });
+    getDamage() {
+      let durabilityInitial = this.durability;
+      if (this.durability >= this.durabilityInitial /100 * 30) {
+        return this.attack;
+      } else if (this.durability === 0) {
+        return this.durability = 0;
+      } else {
+        return this.attack / 2;
+      }
+    }
 
-    studentLog = new StudentLog("Иван Петров");
-  }) 
+    isBroken() {
+      if (this.durability > 0) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+}
 
-  it('Задача №1 Создание простого оружия', () => {
-    expect(weapon).toBeDefined();
-    expect(weapon.name).toEqual('Старый меч');
-    expect(weapon.attack).toEqual(20);
-    expect(weapon.durability).toEqual(10);
-    expect(weapon.range).toEqual(1);
-  });
 
-  it('Задача №1 Проверка прочности оружия', () => {
-    expect(weapon.isBroken()).toBeFalsy();
-    weapon.durability = 0;
-    expect(weapon.isBroken()).toBeTruthy();
-  });
+//Assignment 2
+//regular weapon classes
 
-  it('Задача №1 Проверка нанесение урона по оружию', () => {
-    const startDurabikity = weapon.durability;
-    weapon.takeDamage(10);
-    expect(weapon.durability).toBeLessThan(startDurabikity);
-  });
+class Arm extends Weapon {
+  constructor () {
+  super ({
+    name:"Рука",
+    attack: 1,
+    durability: Infinity,
+    range:1})
+  }
+}
 
-  it('Задача №1 Проверка нанесение урона оружием', () => {
-    expect(weapon.getDamage()).toEqual(weapon.attack);
-    weapon.durability *= 0.1;
-    expect(weapon.getDamage()).toEqual(weapon.attack / 2);
-    weapon.durability = 0;
-    expect(weapon.getDamage()).toEqual(0);
-  });
+class Bow extends Weapon {
+  constructor () {
+  super ({
+    name:"Лук",
+    attack: 10,
+    durability: 200,
+    range:3})
+  }
+}
 
-  it('Задача №2 Создание объекта Arm', () => {
-    weapon = new Arm();
-    expect(weapon).toBeDefined();
-    expect(weapon.name).toEqual('Рука');
-    expect(weapon.attack).toEqual(1);
-    expect(weapon.durability).toBePositiveInfinity();
-    expect(weapon.range).toEqual(1);
-  });
+class Sword extends Weapon {
+  constructor () {
+  super ({
+    name:"Меч",
+    attack: 25,
+    durability: 500,
+    range:1})
+  }
+}
 
-  it('Задача №2 Создание объекта Bow', () => {
-    weapon = new Bow();
-    expect(weapon).toBeDefined();
-    expect(weapon.name).toEqual('Лук');
-    expect(weapon.attack).toEqual(10);
-    expect(weapon.durability).toEqual(200);
-    expect(weapon.range).toEqual(3);
-  });
+class Knife extends Weapon {
+  constructor () {
+  super ({
+    name:"Нож",
+    attack: 5,
+    durability: 300,
+    range:1})
+  }
+}
 
-  it('Задача №2 Создание объекта Sword', () => {
-    weapon = new Sword();
-    expect(weapon).toBeDefined();
-    expect(weapon.name).toEqual('Меч');
-    expect(weapon.attack).toEqual(25);
-    expect(weapon.durability).toEqual(500);
-    expect(weapon.range).toEqual(1);
-  });
+class Staff extends Weapon {
+  constructor () {
+  super ({
+    name:"Посох",
+    attack: 8,
+    durability: 300,
+    range:2})
+  }
+}
 
-  it('Задача №2 Создание объекта Knife', () => {
-    weapon = new Knife();
-    expect(weapon).toBeDefined();
-    expect(weapon.name).toEqual('Нож');
-    expect(weapon.attack).toEqual(5);
-    expect(weapon.durability).toEqual(300);
-    expect(weapon.range).toEqual(1);
-  });
+//extended weapon classes
 
-  it('Задача №2 Создание объекта Staff', () => {
-    weapon = new Staff();
-    expect(weapon).toBeDefined();
-    expect(weapon.name).toEqual('Посох');
-    expect(weapon.attack).toEqual(8);
-    expect(weapon.durability).toEqual(300);
-    expect(weapon.range).toEqual(2);
-  });
+class Longbow extends Bow {
+  constructor () {
+  super ({
+    name:"Длинный лук",
+    attack: 15,
+    durability: bow.durability,
+    range:4})
+  }
+}
 
-  it('Задача №2 Создание объекта LongBow', () => {
-    weapon = new LongBow();
-    expect(weapon).toBeDefined();
-    expect(weapon.name).toEqual('Длинный лук');
-    expect(weapon.attack).toEqual(15);
-    expect(weapon.durability).toEqual(200);
-    expect(weapon.range).toEqual(4);
-  });
+class Axe extends Sword {
+  constructor () {
+  super ({
+    name:"Секира",
+    attack: 27,
+    durability: 800,
+    range: sword.range})
+  }
+}
 
-  it('Задача №2 Создание объекта Axe', () => {
-    weapon = new Axe();
-    expect(weapon).toBeDefined();
-    expect(weapon.name).toEqual('Секира');
-    expect(weapon.attack).toEqual(27);
-    expect(weapon.durability).toEqual(800);
-    expect(weapon.range).toEqual(1);
-  });
+class StaffOfStorm extends Staff {
+  constructor () {
+  super ({
+    name:"Посох Бури",
+    attack: 10,
+    durability: staff.durability,
+    range: 3})
+  }
+}
 
-  it('Задача №2 Создание объекта StormStaff', () => {
-    weapon = new StormStaff();
-    expect(weapon).toBeDefined();
-    expect(weapon.name).toEqual('Посох Бури');
-    expect(weapon.attack).toEqual(10);
-    expect(weapon.durability).toEqual(300);
-    expect(weapon.range).toEqual(3);
-  });
+//test
+console.log('TESTING WEAPONS');
 
-  it('Задача №3 Создание объекта StudentLog', () => {
-    expect(studentLog).toBeDefined();
-  });
+const bow = new Bow();
+console.log(bow.name);
+console.log(bow.attack);
+console.log(bow.durability);
+console.log(bow.range);
 
-  it('Задача №3 Получение имени студента', () => {
-    expect(studentLog.getName()).toEqual("Иван Петров");
-  });
+const arm = new Arm();
+console.log(arm.name);
+console.log(arm.attack);
+console.log(arm.durability);
+console.log(arm.range);
 
-  it('Задача №3 Подсчёт средней оценки по предмету', () => {
-    studentLog.addGrade(3, "algebra");
-    studentLog.addGrade(5, "algebra");
-    expect(studentLog.getAverageBySubject("algebra")).toEqual(4);
-  });
+const sword = new Sword();
+console.log(sword.name);
+console.log(sword.attack);
+console.log(sword.durability);
+console.log(sword.range);
 
-  it('Задача №3 Подсчёт общей средней оценки', () => {
-    studentLog.addGrade(3, "algebra");
-    studentLog.addGrade(5, "algebra");
-    studentLog.addGrade(5, "geometry");
-    studentLog.addGrade(5, "geometry");
-    expect(studentLog.getTotalAverage()).toEqual(4.5);
-  });
-});
+const knife = new Knife();
+console.log(knife.name);
+console.log(knife.attack);
+console.log(knife.durability);
+console.log(knife.range);
+
+const staff = new Staff();
+console.log(staff.name);
+console.log(staff.attack);
+console.log(staff.durability);
+console.log(staff.range);
+
+const longbow = new Longbow();
+console.log(longbow.name);
+console.log(longbow.attack);
+console.log(longbow.durability);
+console.log(longbow.range);
+
+const axe = new Axe();
+console.log(axe.name);
+console.log(axe.attack);
+console.log(axe.durability);
+console.log(axe.range);
+
+const staffOfStorm = new StaffOfStorm();
+console.log(staffOfStorm.name);
+console.log(staffOfStorm.attack);
+console.log(staffOfStorm.durability);
+console.log(staffOfStorm.range);
+
+//test methods
+console.log("\n");
+console.log('TESTING METHODS');
+
+sword.takeDamage(5);
+console.log(sword.durability);
+
+sword.takeDamage(50);
+console.log(sword.durability);
+
+arm.takeDamage(20);
+console.log(arm.durability);
+
+bow.takeDamage(20);
+console.log(bow.durability);
+
+bow.takeDamage(200);
+console.log(bow.durability);
+
+console.log(bow.durability);
+console.log(bow.getDamage());
+
+console.log(arm.durability);
+console.log(bow.getDamage()); 
+
+console.log(bow.durability);
+console.log(bow.isBroken());
