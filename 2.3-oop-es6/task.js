@@ -4,6 +4,7 @@ class Weapon {
         this.name = name;
         this.attack = attack;
         this.durability = durability;
+         this.durabilityInitial = durability;
         this.range = range;
     }
 
@@ -91,86 +92,67 @@ class Staff extends Weapon {
 
 //extended weapon classes
 
-class Longbow extends Weapon {
+class Longbow extends Bow {
   constructor () {
-  super ({
-    name:"Длинный лук",
-    attack: 15,
-    durability: bow.durability,
-    range:4})
+  super ();
+    this.name = "Длинный лук",
+    this.attack = 15,
+    this.durability = bow.durability,
+    this.range = 4;
   }
 }
 
-class Axe extends Weapon {
+class Axe extends Sword {
   constructor () {
-  super ({
-    name:"Секира",
-    attack: 27,
-    durability: 800,
-    range: sword.range})
+  super ();
+    this.name = "Секира",
+    this.attack = 27,
+    this.durability = 800,
+    this.range = sword.range
+    this.durabilityInitial = this.durability;
   }
 }
 
-class StaffOfStorm extends Weapon {
+class StaffOfStorm extends Staff {
   constructor () {
-  super ({
-    name:"Посох Бури",
-    attack: 10,
-    durability: staff.durability,
-    range: 3})
+  super ()
+    this.name = "Посох Бури",
+    this.attack = 10,
+    this.durability = staff.durability,
+    this.range = 3;
   }
 }
 
-//test
-console.log('TESTING WEAPONS');
+//test weapons
+console.log('TESTING REGULAR WEAPONS');
 
 const bow = new Bow();
-console.log(bow.name);
-console.log(bow.attack);
-console.log(bow.durability);
-console.log(bow.range);
+console.log(bow);
 
 const arm = new Arm();
-console.log(arm.name);
-console.log(arm.attack);
-console.log(arm.durability);
-console.log(arm.range);
+console.log(arm);
 
 const sword = new Sword();
-console.log(sword.name);
-console.log(sword.attack);
-console.log(sword.durability);
-console.log(sword.range);
+console.log(sword);
 
 const knife = new Knife();
-console.log(knife.name);
-console.log(knife.attack);
-console.log(knife.durability);
-console.log(knife.range);
+console.log(knife);
 
 const staff = new Staff();
-console.log(staff.name);
-console.log(staff.attack);
-console.log(staff.durability);
-console.log(staff.range);
+console.log(staff);
 
-const longbow = new Longbow();
-console.log(longbow.name);
-console.log(longbow.attack);
-console.log(longbow.durability);
-console.log(longbow.range);
+console.log("\n");
+console.log('TESTING EXTENDED WEAPONS');
 
-const axe = new Axe();
-console.log(axe.name);
-console.log(axe.attack);
-console.log(axe.durability);
-console.log(axe.range);
+const myLongbow = new Longbow;
+console.log(myLongbow);
 
-const staffOfStorm = new StaffOfStorm();
-console.log(staffOfStorm.name);
-console.log(staffOfStorm.attack);
-console.log(staffOfStorm.durability);
-console.log(staffOfStorm.range);
+const myAxe = new Axe;
+console.log(myAxe);
+
+const myStaffOfStorm = new StaffOfStorm;
+console.log(myStaffOfStorm);
+
 
 //test methods
 console.log("\n");
