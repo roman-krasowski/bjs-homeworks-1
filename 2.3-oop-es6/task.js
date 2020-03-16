@@ -97,7 +97,6 @@ class Longbow extends Bow {
   super ();
     this.name = "Длинный лук",
     this.attack = 15,
-    this.durability = bow.durability,
     this.range = 4;
   }
 }
@@ -108,7 +107,6 @@ class Axe extends Sword {
     this.name = "Секира",
     this.attack = 27,
     this.durability = 800,
-    this.range = sword.range
     this.durabilityInitial = this.durability;
   }
 }
@@ -118,7 +116,6 @@ class StaffOfStorm extends Staff {
   super ()
     this.name = "Посох Бури",
     this.attack = 10,
-    this.durability = staff.durability,
     this.range = 3;
   }
 }
