@@ -36,8 +36,12 @@ function calculateAverageRating(){
 function getAverageMark(marks) {
     let sum = 0;
 
+    if (marks.length == 0) {
+        return 0;
+    }
+
     if (marks.length > 5) {
-        marks.slice(0, 5);
+        marks = marks.splice(0, 5);
         console.log('There are over 5 marks.');
     }
 
